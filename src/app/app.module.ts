@@ -18,11 +18,15 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { ProductOwnerComponent } from '../app/product-owner/product-owner.component';
+import { RoleCategoriesFlowChartComponent } from './role-categories-list/role-categories-flowchart';
+import { AuthGuard } from './auth.guard';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
     imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, RouterModule.forRoot([
         { path: '', component: RoleCategoriesComponent },
+        { path: 'jumpstart/:id/:name', component: RoleCategoriesFlowChartComponent },
         { path: 'jump-start/:id/:name', component: RoleCategoriesListComponent },
         { path: 'Product Owner', component: ProductOwnerComponent },
         { path: 'Architect', component: ArchitectComponent },
@@ -33,8 +37,8 @@ import { ProductOwnerComponent } from '../app/product-owner/product-owner.compon
 
     ]),
         MaterialModule, HttpModule, HttpClientModule],
-    declarations: [AppComponent, RoleCategoriesComponent, RoleCategoriesListComponent, ProductOwnerComponent, ArchitectComponent, ManagerComponent, DevTeamComponent, QAComponent, ScrumMasterComponent],
+    declarations: [AppComponent, RoleCategoriesComponent, RoleCategoriesListComponent, ProductOwnerComponent, ArchitectComponent, ManagerComponent, DevTeamComponent, QAComponent, ScrumMasterComponent,RoleCategoriesFlowChartComponent],
     bootstrap: [AppComponent],
-    providers: [AuthService],
+    providers: [AuthService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
 export class AppModule { }

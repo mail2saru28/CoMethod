@@ -3,7 +3,7 @@
         <img src="/assets/img/comakeit-logo.png" [routerLink]="['/']" />
         <div class="navbar-nav px-3" style="display:inline">
             <div class="nav-item text-nowrap nav-link " *ngFor="let link of links">
-                <a class="px-3" [routerLink]="['/jump-start',link.linkId,link.linkName]"> {{link.linkName}}</a>
+                <a class="px-3" [routerLink]="['/jumpstart',link.linkId,link.linkName]"> {{link.linkName}}</a>
             </div>
         </div>
     </div>
